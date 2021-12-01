@@ -1,0 +1,51 @@
+server:
+  host: 0.0.0.0
+  port: 3000
+  cors:
+    - "http://0.0.0.0:4200"
+    - "http://127.0.0.1:4200"
+    - "http://localhost:4200"
+mongodb:
+  uri: mongodb://0.0.0.0:27017/amstramgram
+users:
+  title: Amstramgram documentation
+  description: Documentation of users
+  version: 1.0
+  tag: users
+  path: api/users
+posts:
+  title: Amstramgram documentation
+  description: Documentation of posts
+  version: 1.0
+  tag: posts
+  path: api/posts
+comments:
+  title: Amstramgram documentation
+  description: Documentation of comments
+  version: 1.0
+  tag: comments
+  path: api/comments
+follows:
+  title: Amstramgram documentation
+  description: Documentation of follows
+  version: 1.0
+  tag: follows
+  path: api/follows
+likes:
+  title: Amstramgram documentation
+  description: Documentation of likes
+  version: 1.0
+  tag: likes
+  path: api/likes
+notifications:
+  title: Amstramgram documentation
+  description: Documentation of notifications
+  version: 1.0
+  tag: notifications
+  path: api/notifications
+medias:
+  title: Amstramgram documentation
+  description: Documentation of medias upload
+  version: 1.0
+  tag: medias
+  path: api/medias
