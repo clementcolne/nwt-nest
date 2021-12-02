@@ -1,5 +1,4 @@
 import {
-  ConflictException,
   Injectable,
   NotFoundException,
   UnprocessableEntityException,
@@ -18,12 +17,7 @@ import {
 import { NotificationEntity } from './entities/notification.entity';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { Notification } from './schemas/notification.schema';
-import { CreateUserDto } from '../users/dto/create-user.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
-import { User } from '../users/schemas/user.schema';
-import { UserEntity } from '../users/entities/user.entity';
-import { Post } from '../posts/schemas/post.schema';
-import { PostEntity } from '../posts/entities/post.entity';
 
 @Injectable()
 export class NotificationsService {
@@ -66,31 +60,7 @@ export class NotificationsService {
   }
 
   /**
-   * Deletes one notification in notifications list
-   *
-   * @param {string} like of the post to delete
-   *
-   * @returns {Observable<void>}
-   */
-  /*delete = (like: CreateNotificationDto): Observable<void> =>
-    this._notificationDao.findAndRemove(like.idLiker, like.idLiked).pipe(
-      catchError((e) =>
-        throwError(() => new UnprocessableEntityException(e.message)),
-      ),
-      mergeMap((_: Notification) =>
-        !!_
-          ? of(undefined)
-          : throwError(
-              () =>
-                new NotFoundException(
-                  `Like with idLiker '${like.idLiked}' and idLiked '${like.idLiked}' not found`,
-                ),
-            ),
-      ),
-    );*/
-
-  /**
-   * Add user with good data in user list
+   * Add notification with good data in notifications list
    *
    * @param notif to add
    *

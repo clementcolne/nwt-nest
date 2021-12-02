@@ -10,7 +10,7 @@ export class ChatDao {
   /**
    * Class constructor
    *
-   * @param {Model<UserDocument>} _chatModel instance of the model representing a like
+   * @param {Model<ChatDocument>} _chatModel instance of the model representing a chat
    */
   constructor(
     @InjectModel(Chat.name)
@@ -39,7 +39,7 @@ export class ChatDao {
   /**
    * Call mongoose method, call toJSON on each result and returns ChatModel[] or undefined
    *
-   * @return {Observable<Like[] | void>}
+   * @return {Observable<Chat[] | void>}
    */
   findConversations = (src: string): Observable<Chat[] | void> =>
     from(

@@ -59,7 +59,7 @@ export class FollowsService {
   /**
    * Deletes one follow in follows list
    *
-   * @param {string} follow of the post to delete
+   * @param {string} follow to delete
    *
    * @returns {Observable<void>}
    */

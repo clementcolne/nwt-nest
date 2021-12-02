@@ -10,7 +10,7 @@ export class CommentsDao {
   /**
    * Class constructor
    *
-   * @param {Model<UserDocument>} _commentModel instance of the model representing a comment
+   * @param {Model<CommentDocument>} _commentModel instance of the model representing a comment
    */
   constructor(
     @InjectModel(Comment.name)

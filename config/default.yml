@@ -49,3 +49,9 @@ medias:
   version: 1.0
   tag: medias
   path: api/medias
+chats:
+  title: Amstramgram documentation
+  description: Documentation of chat
+  version: 1.0
+  tag: chats
+  path: api/chats

@@ -73,7 +73,7 @@ export class FollowsController {
   }
 
   /**
-   * Handler to answer to POST /follows route
+   * Handler to answer to DELETE /follows route
    *
    * @returns Observable<FollowEntity>
    *

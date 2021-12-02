@@ -32,7 +32,7 @@ export class PostEntity {
   media: string;
 
   @ApiProperty({
-    name: 'media',
+    name: 'mediaType',
     description: 'type of media',
     example: 'image|video',
   })
@@ -70,7 +70,7 @@ export class PostEntity {
   location?: string;
 
   @ApiProperty({
-    name: 'comments',
+    name: 'nbComments',
     description: 'number of comments',
     example: '107',
   })

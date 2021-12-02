@@ -35,8 +35,8 @@ export class ChatEntity {
   author: string;
 
   @ApiProperty({
-    name: 'author',
-    description: 'author',
+    name: 'message',
+    description: 'messageContent of the message',
     example: 'Hey friend ;) !',
   })
   @Expose()

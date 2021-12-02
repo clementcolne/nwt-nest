@@ -35,7 +35,7 @@ export class PostsController {
   /**
    * Handler to answer to GET /posts route
    *
-   * @returns Observable<CommentEntity[] | void>
+   * @returns Observable<PostEntity[] | void>
    */
   @ApiOkResponse({
     description: 'Returns an array of posts',
@@ -81,7 +81,7 @@ export class PostsController {
   }
 
   /**
-   * Handler to answer to GET /posts/user/:id route
+   * Handler to answer to GET /posts/:id route
    *
    * @param {HandlerParams} params list of route params to take post id
    *
@@ -136,7 +136,7 @@ export class PostsController {
   }
 
   /**
-   * Handler to answer to PUT /post/:id route
+   * Handler to answer to PATCH /post/:id route
    *
    * @param {HandlerParams} params list of route params to take post id
    * @param updatePostDto data to update

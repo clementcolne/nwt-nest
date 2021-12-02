@@ -52,7 +52,7 @@ export class ChatController {
     type: String,
     allowEmptyValue: false,
   })
-  @ApiNoContentResponse({ description: 'No chats exists in database' })
+  @ApiNoContentResponse({ description: 'No chats between theses 2 users exists in database' })
   @UseGuards(JwtAuthGuard)
   @Get(':src/:dst')
   findAll(@Param() params: HandlerParams): Observable<ChatEntity[] | void> {
@@ -68,12 +68,6 @@ export class ChatController {
     description: 'Returns an array of chats of the user in parameter',
     type: ChatEntity,
     isArray: true,
-  })
-  @ApiParam({
-    name: 'src',
-    description: 'Unique identifier of the user in the database',
-    type: String,
-    allowEmptyValue: false,
   })
   @ApiParam({
     name: 'id',

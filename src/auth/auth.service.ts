@@ -12,6 +12,9 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  /**
+   * Return the user if the passwords + username match, otherwise false
+   */
   validateUser(pseudo: string, pass: string): Observable<UserEntity> {
     return this._usersService
       .findOne(pseudo)
@@ -22,6 +25,9 @@ export class AuthService {
       );
   }
 
+  /**
+   * Build and return the JWT token for the given user
+   */
   async login(user: any) {
     const payload = {
       username: user.username,

@@ -13,6 +13,7 @@ import { FollowsModule } from './follows/follows.module';
 import { LikesModule } from './likes/likes.module';
 import { NotificationsModule } from './notification/notifications.module';
 import { MediaModule } from './medias/media.module';
+import { ChatModule } from './chat/chat.module';
 
 async function bootstrap(
   config: AppConfig,
@@ -23,6 +24,7 @@ async function bootstrap(
   swaggerConfigLikes: SwaggerConfig,
   swaggerConfigNotifications: SwaggerConfig,
   swaggerConfigMedias: SwaggerConfig,
+  swaggerConfigChat: SwaggerConfig,
 ) {
   const app = await NestFactory.create(AppModule);
 
@@ -45,6 +47,7 @@ async function bootstrap(
   _buildDocumentation(app, LikesModule, swaggerConfigLikes);
   _buildDocumentation(app, NotificationsModule, swaggerConfigNotifications);
   _buildDocumentation(app, MediaModule, swaggerConfigMedias);
+  _buildDocumentation(app, ChatModule, swaggerConfigChat);
 
   await app.listen(config.port, config.host);
   Logger.log(
@@ -84,4 +87,6 @@ bootstrap(
   Config.get<SwaggerConfig>('likes'),
   Config.get<SwaggerConfig>('notifications'),
   Config.get<SwaggerConfig>('medias'),
+  Config.get<SwaggerConfig>('chats'),
 );
+

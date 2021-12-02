@@ -26,7 +26,6 @@ import {
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guards';
 import { HttpInterceptor } from '../interceptors/http.interceptor';
-import { UserEntity } from '../users/entities/user.entity';
 import { UpdateUserDto } from '../users/dto/update-user.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 
@@ -84,7 +83,7 @@ export class NotificationsController {
   /**
    * Handler to answer to PATCH /notifications/:id route
    *
-   * @param {HandlerParams} params list of route params to take user id
+   * @param {HandlerParams} params list of route params to take notification id
    * @param updateNotificationDto data to update
    *
    * @returns Observable<UserEntity>
@@ -112,7 +111,10 @@ export class NotificationsController {
     type: String,
     allowEmptyValue: false,
   })
-  @ApiBody({ description: 'Payload to update a user', type: UpdateUserDto })
+  @ApiBody({
+    description: 'Payload to update a notification',
+    type: UpdateUserDto,
+  })
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
   update(
@@ -121,29 +123,4 @@ export class NotificationsController {
   ): Observable<NotificationEntity> {
     return this._notificationsService.update(params.id, updateNotificationDto);
   }
-
-  /**
-   * Handler to answer to POST /notifications route
-   *
-   * @returns Observable<NotificationEntity>
-   *
-   * @param deleteNotificationDto
-   */
-  /*@ApiCreatedResponse({
-    description: 'The like has been successfully deleted',
-    type: NotificationEntity,
-  })
-  @ApiBadRequestResponse({ description: 'Payload provided is not good' })
-  @ApiUnprocessableEntityResponse({
-    description: "The request can't be performed in the database",
-  })
-  @ApiBody({
-    description: 'Payload to delete a like',
-    type: DeleteNotificationDto,
-  })
-  @UseGuards(JwtAuthGuard)
-  @Delete()
-  delete(@Body() deleteLikeDto: DeleteNotificationDto): Observable<void> {
-    return this._notificationsService.delete(deleteLikeDto);
-  }*/
 }

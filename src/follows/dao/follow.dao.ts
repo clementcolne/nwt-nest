@@ -10,7 +10,7 @@ export class FollowDao {
   /**
    * Class constructor
    *
-   * @param {Model<UserDocument>} _followModel instance of the model representing a follow
+   * @param {Model<FollowDocument>} _followModel instance of the model representing a follow
    */
   constructor(
     @InjectModel(Follow.name)

@@ -1,5 +1,6 @@
 import {
-  Body, ClassSerializerInterceptor,
+  Body,
+  ClassSerializerInterceptor,
   Controller,
   Delete,
   Get,
@@ -54,7 +55,7 @@ export class UsersController {
   /**
    * Handler to answer to GET /users/:username route
    *
-   * @param {HandlerParams} params list of route params to take user id
+   * @param {HandlerParams} params list of route params to take user username
    *
    * @returns Observable<UserEntity>
    */
@@ -85,7 +86,7 @@ export class UsersController {
   /**
    * Handler to answer to GET /users/:id route
    *
-   * @param {HandlerParams} params list of route params to take user id
+   * @param {HandlerParamsId} params list of route params to take user id
    *
    * @returns Observable<UserEntity>
    */
@@ -140,9 +141,9 @@ export class UsersController {
   }
 
   /**
-   * Handler to answer to PUT /users/:id route
+   * Handler to answer to PATCH /users/:username route
    *
-   * @param {HandlerParams} params list of route params to take user id
+   * @param {HandlerParams} params list of route params to take user username
    * @param updateUserDto data to update
    *
    * @returns Observable<UserEntity>
@@ -181,9 +182,9 @@ export class UsersController {
   }
 
   /**
-   * Handler to answer to DELETE /users/:id route
+   * Handler to answer to DELETE /users/:username route
    *
-   * @param {HandlerParams} params list of route params to take user id
+   * @param {HandlerParams} params list of route params to take user username
    *
    * @returns Observable<void>
    */

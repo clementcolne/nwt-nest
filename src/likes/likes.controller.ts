@@ -33,7 +33,7 @@ export class LikesController {
   /**
    * Handler to answer to GET /likes/:id route
    *
-   * @returns Observable<NotificationEntity[] | void>
+   * @returns Observable<LikesEntity[] | void>
    */
   @ApiOkResponse({
     description: 'Returns an array of liked posts for a given user',
@@ -79,7 +79,7 @@ export class LikesController {
   }
 
   /**
-   * Handler to answer to POST /likes route
+   * Handler to answer to DELETE /likes route
    *
    * @returns Observable<LikeEntity>
    *

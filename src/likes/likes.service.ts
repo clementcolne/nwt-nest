@@ -59,7 +59,7 @@ export class LikesService {
   /**
    * Deletes one like in likes list
    *
-   * @param {string} like of the post to delete
+   * @param {string} like to delete
    *
    * @returns {Observable<void>}
    */

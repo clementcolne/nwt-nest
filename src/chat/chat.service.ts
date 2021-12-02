@@ -36,7 +36,7 @@ export class ChatService {
     );
 
   /**
-   * Returns all existing in in the list for a given user
+   * Returns all existing chats in in the list for a given user
    *
    * @returns {Observable<ChatEntity[] | void>}
    */

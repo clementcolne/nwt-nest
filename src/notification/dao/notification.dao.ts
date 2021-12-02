@@ -66,23 +66,4 @@ export class NotificationDao {
     from(new this._notificationModel(notification).save()).pipe(
       map((doc: NotificationDocument) => doc.toJSON()),
     );
-
-  /**
-   * Delete a notification in the db
-   *
-   * @param {string} idLiker
-   * @param {string} idLiked
-   *
-   * @return {Observable<Like | void>}
-   */
-  /*findAndRemove = (idLiker: string, idLiked: string): Observable<Like | void> =>
-    from(
-      this._notificationModel.findOneAndDelete({
-        $and: [{ idLiker: idLiker }, { idLiked: idLiked }],
-      }),
-    ).pipe(
-      filter((doc: LikeDocument) => !!doc),
-      map((doc: LikeDocument) => doc.toJSON()),
-      defaultIfEmpty(undefined),
-    );*/
 }

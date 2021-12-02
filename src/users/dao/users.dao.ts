@@ -11,7 +11,7 @@ export class UsersDao {
   /**
    * Class constructor
    *
-   * @param {Model<UserDocument>} _userModel instance of the model representing a Person
+   * @param {Model<UserDocument>} _userModel instance of the model representing a User
    */
   constructor(
     @InjectModel(User.name)
@@ -31,9 +31,9 @@ export class UsersDao {
     );
 
   /**
-   * Returns one person of the list matching id in parameter
+   * Returns one user of the list matching username in parameter
    *
-   * @param {string} username of the person in the db
+   * @param {string} username of the user in the db
    *
    * @return {Observable<User | void>}
    */
@@ -45,9 +45,9 @@ export class UsersDao {
     );
 
   /**
-   * Returns one person of the list matching id in parameter
+   * Returns one user of the list matching id in parameter
    *
-   * @param {string} id of the person in the db
+   * @param {string} id of the user in the db
    *
    * @return {Observable<User | void>}
    */
@@ -59,7 +59,7 @@ export class UsersDao {
     );
 
   /**
-   * Check if user already exists with index and add it in people list
+   * Check if user already exists with index and add it in users list
    *
    * @param {CreateUserDto} user to create
    *
@@ -85,7 +85,7 @@ export class UsersDao {
     );
 
   /**
-   * Update a person in people list
+   * Update a user in users list
    *
    * @param {string} username
    * @param {UpdateUserDto} user

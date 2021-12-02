@@ -21,8 +21,6 @@ import { User } from './schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
-import { PostEntity } from '../posts/entities/post.entity';
-import { Post } from '../posts/schemas/post.schema';
 
 @Injectable()
 export class UsersService {
@@ -116,7 +114,7 @@ export class UsersService {
   }
 
   /**
-   * Deletes one user in people list
+   * Deletes one user in users list
    *
    * @param {string} username of the user to delete
    *
@@ -180,7 +178,7 @@ export class UsersService {
 
   /**
    * Hash the password of the user
-   * @param createUserDto CreateCommentDto
+   * @param createUserDto CreateUserDto
    */
   private _hashPassword(
     createUserDto: CreateUserDto,
@@ -195,7 +193,7 @@ export class UsersService {
 
   /**
    * Hash the password of the user
-   * @param updateUserDto CreateCommentDto
+   * @param updateUserDto UpdateUserDto
    */
   private _hashPasswordUpdate(
     updateUserDto: UpdateUserDto,

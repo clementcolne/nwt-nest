@@ -1,5 +1,8 @@
 import { extname } from 'path';
 
+/**
+ * Only allow images and video
+ */
 export const mediaFilter = (req, file: Express.Multer.File, callback) => {
   if (!file.mimetype.includes('image/') && !file.mimetype.includes('video/')) {
     return callback(new Error('Only images are allowed'), false);
@@ -7,6 +10,9 @@ export const mediaFilter = (req, file: Express.Multer.File, callback) => {
   callback(null, true);
 };
 
+/**
+ * Create unique name for the file
+ */
 export const editFileName = (req, file, callback) => {
   const name = file.originalname.substring(
     0,
