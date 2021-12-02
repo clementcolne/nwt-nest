@@ -75,3 +75,17 @@ posts.forEach(function (element) {
 });
 
 db.getCollection('posts').find({});
+
+db.getCollection('users').createIndexes([{ email: 1 }, { username: 1 }], {
+  unique: true,
+});
+
+db.getCollection('likes').createIndex(
+  { idLiker: 1, idLiked: 1 },
+  { unique: true }
+);
+
+db.getCollection('follows').createIndex(
+  { idFollower: 1, idFollowed: 1 },
+  { unique: true }
+);
