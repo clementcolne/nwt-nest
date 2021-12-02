@@ -48,6 +48,15 @@ db.getCollection('users').insertMany([
 db.getCollection('posts').insertMany([
   {
     idAuthor: 'clement.colne',
+    media: 'chocolat.jpeg',
+    mediaType: 'image',
+    likes: 0,
+    description: 'Nelly qui me prend encore pour son cobbaye...',
+    location: 'Dépression',
+    nbComments: 0,
+  },
+  {
+    idAuthor: 'clement.colne',
     media: 'kiki.jpeg',
     mediaType: 'image',
     likes: 267,
