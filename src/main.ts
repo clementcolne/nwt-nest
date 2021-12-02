@@ -67,6 +67,17 @@ const _buildDocumentation = (
     .setDescription(swaggerConfig.description)
     .setVersion(swaggerConfig.version)
     .addTag(swaggerConfig.tag)
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter a JWT token',
+        in: 'header',
+      },
+      'jwt-auth',
+    )
     .build();
 
   // create swagger document

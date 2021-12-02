@@ -40,15 +40,17 @@ export class NotificationDao {
    *
    * @return {Observable<Notification[] | void>}
    */
-  findByIdAndUpdate = (
-    id: string,
-    notif: UpdateNotificationDto,
-  ): Observable<Notification | void> =>
+  findByIdAndUpdate = (id: string): Observable<Notification | void> =>
     from(
-      this._notificationModel.findOneAndUpdate({ id: id }, notif, {
-        new: true,
-        runValidators: true,
-      }),
+      this._notificationModel.findByIdAndUpdate(
+        id,
+        {
+          isRead: true,
+        },
+        {
+          runValidators: true,
+        },
+      ),
     ).pipe(
       filter((doc: NotificationDocument) => !!doc),
       map((doc: NotificationDocument) => doc.toJSON()),

@@ -84,11 +84,8 @@ export class NotificationsService {
    *
    * @returns {Observable<UpdateNotificationDto>}
    */
-  update = (
-    id: string,
-    notif: UpdateNotificationDto,
-  ): Observable<NotificationEntity> =>
-    this._notificationDao.findByIdAndUpdate(id, notif).pipe(
+  update = (id: string): Observable<NotificationEntity> =>
+    this._notificationDao.findByIdAndUpdate(id).pipe(
       catchError((e) =>
         throwError(() => new UnprocessableEntityException(e.message)),
       ),

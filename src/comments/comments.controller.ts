@@ -13,7 +13,7 @@ import { CommentsService } from './comments.service';
 import { Observable } from 'rxjs';
 import { CommentEntity } from './entities/comment.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiNotFoundResponse,
@@ -108,6 +108,7 @@ export class CommentsController {
     description: 'Payload to create a new comment',
     type: CreateCommentDto,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Post()
   create(

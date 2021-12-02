@@ -14,7 +14,7 @@ import { NotificationsService } from './notifications.service';
 import { Observable } from 'rxjs';
 import { NotificationEntity } from './entities/notification.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiConflictResponse,
   ApiCreatedResponse,
@@ -27,7 +27,6 @@ import {
 import { JwtAuthGuard } from '../auth/jwt-auth.guards';
 import { HttpInterceptor } from '../interceptors/http.interceptor';
 import { UpdateUserDto } from '../users/dto/update-user.dto';
-import { UpdateNotificationDto } from './dto/update-notification.dto';
 
 @Controller('notifications')
 @UseInterceptors(HttpInterceptor)
@@ -72,6 +71,7 @@ export class NotificationsController {
     description: 'Payload to create a new notification',
     type: CreateNotificationDto,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Post()
   create(
@@ -84,7 +84,6 @@ export class NotificationsController {
    * Handler to answer to PATCH /notifications/:id route
    *
    * @param {HandlerParams} params list of route params to take notification id
-   * @param updateNotificationDto data to update
    *
    * @returns Observable<UserEntity>
    */
@@ -116,11 +115,9 @@ export class NotificationsController {
     type: UpdateUserDto,
   })
   @Patch(':id')
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
-  update(
-    @Param() params: HandlerParams,
-    @Body() updateNotificationDto: UpdateNotificationDto,
-  ): Observable<NotificationEntity> {
-    return this._notificationsService.update(params.id, updateNotificationDto);
+  update(@Param() params: HandlerParams): Observable<NotificationEntity> {
+    return this._notificationsService.update(params.id);
   }
 }

@@ -15,7 +15,7 @@ import { PostsService } from './posts.service';
 import { Observable } from 'rxjs';
 import { PostEntity } from './entities/post.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiNoContentResponse,
@@ -43,6 +43,7 @@ export class PostsController {
     isArray: true,
   })
   @ApiNoContentResponse({ description: 'No post exists in database' })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get()
   findAll(): Observable<PostEntity[] | void> {
@@ -74,6 +75,7 @@ export class PostsController {
     type: String,
     allowEmptyValue: false,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get('/user/:id')
   findByUser(@Param() params: HandlerParams): Observable<PostEntity[] | void> {
@@ -104,6 +106,7 @@ export class PostsController {
     type: String,
     allowEmptyValue: false,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param() params: HandlerParams): Observable<PostEntity> {
@@ -129,6 +132,7 @@ export class PostsController {
     description: 'Payload to create a new post',
     type: CreatePostDto,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createPostDto: CreatePostDto): Observable<PostEntity> {
@@ -164,6 +168,7 @@ export class PostsController {
   })
   @ApiBody({ description: 'Payload to update a post', type: UpdatePostDto })
   @Patch(':id')
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   update(
     @Param() params: HandlerParams,
@@ -195,6 +200,7 @@ export class PostsController {
     type: String,
     allowEmptyValue: false,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   delete(@Param() params: HandlerParams): Observable<void> {

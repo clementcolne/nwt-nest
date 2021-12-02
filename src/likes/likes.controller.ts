@@ -14,7 +14,7 @@ import { LikesService } from './likes.service';
 import { Observable } from 'rxjs';
 import { LikeEntity } from './entities/like.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiNoContentResponse,
@@ -97,6 +97,7 @@ export class LikesController {
     description: 'Payload to delete a like',
     type: DeleteLikeDto,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Delete()
   delete(@Body() deleteLikeDto: DeleteLikeDto): Observable<void> {

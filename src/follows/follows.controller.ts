@@ -14,7 +14,7 @@ import { FollowsService } from './follows.service';
 import { Observable } from 'rxjs';
 import { FollowEntity } from './entities/follow.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiNoContentResponse,
@@ -91,6 +91,7 @@ export class FollowsController {
     description: 'Payload to create a new follow',
     type: DeleteFollowDto,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Delete()
   delete(@Body() deleteFollowDto: DeleteFollowDto): Observable<void> {

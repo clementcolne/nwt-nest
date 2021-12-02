@@ -13,7 +13,7 @@ import { ChatService } from './chat.service';
 import { Observable } from 'rxjs';
 import { ChatEntity } from './entities/chat.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiNoContentResponse,
@@ -52,7 +52,10 @@ export class ChatController {
     type: String,
     allowEmptyValue: false,
   })
-  @ApiNoContentResponse({ description: 'No chats between theses 2 users exists in database' })
+  @ApiNoContentResponse({
+    description: 'No chats between theses 2 users exists in database',
+  })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get(':src/:dst')
   findAll(@Param() params: HandlerParams): Observable<ChatEntity[] | void> {
@@ -76,6 +79,7 @@ export class ChatController {
     allowEmptyValue: false,
   })
   @ApiNoContentResponse({ description: 'No chats exists in database' })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findConversations(
@@ -103,6 +107,7 @@ export class ChatController {
     description: 'Payload to create a new chat',
     type: CreateChatDto,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createChatDto: CreateChatDto): Observable<ChatEntity> {

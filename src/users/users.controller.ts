@@ -17,7 +17,7 @@ import { UsersService } from './users.service';
 import { Observable } from 'rxjs';
 import { UserEntity } from './entities/user.entity';
 import {
-  ApiBadRequestResponse,
+  ApiBadRequestResponse, ApiBearerAuth,
   ApiBody,
   ApiConflictResponse,
   ApiCreatedResponse,
@@ -77,6 +77,7 @@ export class UsersController {
     type: String,
     allowEmptyValue: false,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get(':username')
   findOne(@Param() params: HandlerParams): Observable<UserEntity> {
@@ -107,6 +108,7 @@ export class UsersController {
     type: String,
     allowEmptyValue: false,
   })
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   @Get('id/:id')
   findById(@Param() params: HandlerParamsId): Observable<UserEntity> {
@@ -173,6 +175,7 @@ export class UsersController {
   })
   @ApiBody({ description: 'Payload to update a user', type: UpdateUserDto })
   @Patch(':username')
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   update(
     @Param() params: HandlerParams,
@@ -206,6 +209,7 @@ export class UsersController {
     allowEmptyValue: false,
   })
   @Delete(':username')
+  @ApiBearerAuth('jwt-auth')
   @UseGuards(JwtAuthGuard)
   delete(@Param() params: HandlerParams): Observable<void> {
     return this._userService.delete(params.username);
