@@ -3,6 +3,8 @@
  * You can use it with mongo-shell or a tool like Robo3T
  */
 
+use amstramgram
+
 // Insert people array
 db.getCollection('users').insertMany([
   {
@@ -27,9 +29,6 @@ db.getCollection('users').insertMany([
   }
 ]);
 
-// display the final initial data
-db.getCollection('users').find({});
-
 db.getCollection('posts').insertMany([
   {
     idAuthor: 'clement.colne',
@@ -51,43 +50,27 @@ db.getCollection('posts').insertMany([
   }
 ]);
 
-var posts = db
-  .getCollection('posts')
-  .find({})
-  .map(function (element) {
-    return {
-      _id: element._id,
-      idAuthor: element.idAuthor,
-    };
-  });
+var posts = db.getCollection('posts').find({}).map(function (element) {return {_id: element._id,idAuthor: element.idAuthor}});
 
-var users = db
-  .getCollection('users')
-  .find({})
-  .map(function (element) {
-    return {
-      _id: element._id,
-      username: element.username,
-    };
-  });
-
+var users = db.getCollection('users').find({}).map(function (element) {return {_id: element._id,username: element.username}});
 // For each element of the array ...
 posts.forEach(function (element) {
   // ... check if we have a manager
   if (!!element.idAuthor) {
-    // try to get the related manager element inside the array
-    var user = users.find(function (elt) {
-      return elt.username.toLowerCase() === element.idAuthor.toLowerCase();
-    });
+    users.forEach(function (u) {
 
-    // check if we found one
-    if (!!user) {
-      // update the person with the managerId
-      db.getCollection('posts').updateOne(
-        { _id: element._id },
-        { $set: { idAuthor: user._id } }
-      );
-    }
+      if(u.username === element.idAuthor){
+        user = u
+      }
+      // check if we found one
+      if (!!user) {
+        // update the person with the managerId
+        db.getCollection('posts').updateOne(
+          { _id: element._id },
+          { $set: { idAuthor: user._id } }
+        );
+      }
+    });
   }
 });
 
