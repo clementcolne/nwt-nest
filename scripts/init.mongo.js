@@ -26,19 +26,19 @@ db.getCollection('posts').insertMany([
     idAuthor: 'clement.colne',
     media: 'default/default.png',
     mediaType: 'image',
-    likes: 100,
-    description: 'This is a description',
+    likes: 267,
+    description: 'My weekend in Paris :D',
     location: 'Paris, France',
-    nbComments: 3,
+    nbComments: 0,
   },
   {
     idAuthor: 'adeleb54',
     media: 'default/default.png',
     mediaType: 'image',
-    likes: 100,
-    description: 'This is a description',
+    likes: 83,
+    description: 'My weekend in Paris :D',
     location: 'Paris, France',
-    nbComments: 1,
+    nbComments: 0,
   }
 ]);
 var posts = db.getCollection('posts').find({}).map(function (element) {return {_id: element._id,idAuthor: element.idAuthor}});
