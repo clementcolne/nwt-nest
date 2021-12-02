@@ -5,7 +5,7 @@ db.getCollection('users').insertMany([
     email: 'clement.colne@outlook.com',
     password: '$2b$10$ALOiykukRJlfjQUnwDcJZ.tR5sP.rRgod1iaYbLriF29PReg7S02e',
     description: 'Software Engineer based in Luxembourg',
-    profilePicture: 'default/default.jpeg',
+    profilePicture: 'default/default.png',
     nbFollow: 178,
     nbFollowers: 861,
     isPrivate: false,
@@ -15,7 +15,7 @@ db.getCollection('users').insertMany([
     email: 'adeleb54.2@gmail.com',
     password: '$2b$10$ALOiykukRJlfjQUnwDcJZ.tR5sP.rRgod1iaYbLriF29PReg7S02e',
     description: 'Ingénieure logicielle à Grenoble',
-    profilePicture: 'default/default.jpeg',
+    profilePicture: 'default/default.png',
     nbFollow: 587,
     nbFollowers: 1894,
     isPrivate: false,
@@ -24,7 +24,7 @@ db.getCollection('users').insertMany([
 db.getCollection('posts').insertMany([
   {
     idAuthor: 'clement.colne',
-    media: 'https://randomuser.me/portraits/men/78.jpg',
+    media: 'default/default.png',
     mediaType: 'image',
     likes: 100,
     description: 'This is a description',
@@ -33,7 +33,7 @@ db.getCollection('posts').insertMany([
   },
   {
     idAuthor: 'adeleb54',
-    media: 'assets/img/clement.jpeg',
+    media: 'default/default.png',
     mediaType: 'image',
     likes: 100,
     description: 'This is a description',
