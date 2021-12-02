@@ -108,15 +108,6 @@ db.getCollection('posts').insertMany([
     description: 'Nice cat',
     location: 'Pulnoy',
     nbComments: 0,
-  },
-  {
-    idAuthor: 'clement.colne',
-    media: 'chocolat.jpeg',
-    mediaType: 'image',
-    likes: 0,
-    description: 'Nelly qui me prend encore pour son cobbaye...',
-    location: 'Dépression',
-    nbComments: 0,
   }
 ]);
 var posts = db.getCollection('posts').find({}).map(function (element) {return {_id: element._id,idAuthor: element.idAuthor}});
