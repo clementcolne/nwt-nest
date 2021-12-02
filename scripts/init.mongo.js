@@ -10,7 +10,7 @@ db.getCollection('users').insertMany([
   {
     username: 'clement.colne',
     email: 'clement.colne@outlook.com',
-    password: '$2b$10$//DXiVVE59p7G5k/4Klx/ezF7BI42QZKmoOD0NDvUuqxRE5bFFBLy',
+    password: '$2b$10$ALOiykukRJlfjQUnwDcJZ.tR5sP.rRgod1iaYbLriF29PReg7S02e',
     description: 'Software Engineer based in Luxembourg',
     profilePicture: 'default/default.jpeg',
     nbFollow: 178,
@@ -20,7 +20,7 @@ db.getCollection('users').insertMany([
   {
     username: 'adeleb54',
     email: 'adeleb54.2@gmail.com',
-    password: '$2b$10$//DXiVVE59p7G5k/4Klx/ezF7BI42QZKmoOD0NDvUuqxRE5bFFBLy',
+    password: '$2b$10$ALOiykukRJlfjQUnwDcJZ.tR5sP.rRgod1iaYbLriF29PReg7S02e',
     description: 'Ingénieure logicielle à Grenoble',
     profilePicture: 'default/default.jpeg',
     nbFollow: 587,
