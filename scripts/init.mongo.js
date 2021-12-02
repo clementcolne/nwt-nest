@@ -1,11 +1,4 @@
-/**
- * This script is to insert initial data inside the collection people of the database nwt
- * You can use it with mongo-shell or a tool like Robo3T
- */
-
 use amstramgram
-
-// Insert people array
 db.getCollection('users').insertMany([
   {
     username: 'clement.colne',
@@ -28,7 +21,6 @@ db.getCollection('users').insertMany([
     isPrivate: false,
   }
 ]);
-
 db.getCollection('posts').insertMany([
   {
     idAuthor: 'clement.colne',
@@ -49,22 +41,15 @@ db.getCollection('posts').insertMany([
     nbComments: 1,
   }
 ]);
-
 var posts = db.getCollection('posts').find({}).map(function (element) {return {_id: element._id,idAuthor: element.idAuthor}});
-
 var users = db.getCollection('users').find({}).map(function (element) {return {_id: element._id,username: element.username}});
-// For each element of the array ...
 posts.forEach(function (element) {
-  // ... check if we have a manager
   if (!!element.idAuthor) {
     users.forEach(function (u) {
-
       if(u.username === element.idAuthor){
         user = u
       }
-      // check if we found one
       if (!!user) {
-        // update the person with the managerId
         db.getCollection('posts').updateOne(
           { _id: element._id },
           { $set: { idAuthor: user._id } }
@@ -73,18 +58,14 @@ posts.forEach(function (element) {
     });
   }
 });
-
 db.getCollection('posts').find({});
-
 db.getCollection('users').createIndexes([{ email: 1 }, { username: 1 }], {
   unique: true,
 });
-
 db.getCollection('likes').createIndex(
   { idLiker: 1, idLiked: 1 },
   { unique: true }
 );
-
 db.getCollection('follows').createIndex(
   { idFollower: 1, idFollowed: 1 },
   { unique: true }
